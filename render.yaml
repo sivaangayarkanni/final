@@ -16,7 +16,7 @@ services:
         sync: false
       - key: JWT_SECRET
         sync: false
-    autoDeploy: false
+    autoDeploy: true
 
   # Frontend Static Site
   - type: web
@@ -27,5 +27,5 @@ services:
     staticPublishPath: ./frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        sync: false
-    autoDeploy: false
+        value: https://mini-crm-backend.onrender.com
+    autoDeploy: true
