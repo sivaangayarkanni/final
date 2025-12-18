@@ -27,5 +27,5 @@ services:
     staticPublishPath: ./frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://mini-crm-backend.onrender.com
+        value: https://final-backend-07ab.onrender.com
     autoDeploy: true
