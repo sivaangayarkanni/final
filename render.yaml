@@ -1,31 +1,21 @@
 services:
-  # Backend API Service
   - type: web
     name: mini-crm-backend
-    runtime: node
-    plan: free
+    env: node
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
-    healthCheckPath: /api/health
     envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://renderuser:render12345@mini-crm.vs8hoe0.mongodb.net/minicrm?retryWrites=true&w=majority
+      - key: JWT_SECRET
+        value: minicrm_jwt_secret_key_2024
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
-      - key: MONGODB_URI
-        sync: false
-      - key: JWT_SECRET
-        sync: false
-    autoDeploy: true
 
-  # Frontend Static Site
-  - type: web
+  - type: static
     name: mini-crm-frontend
-    runtime: static
-    plan: free
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/build
+    staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
         value: https://final-backend-07ab.onrender.com
-    autoDeploy: true
