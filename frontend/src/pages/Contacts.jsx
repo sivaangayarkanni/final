@@ -43,7 +43,7 @@ const Contacts = () => {
   const fetchContacts = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/contacts', {
+      const response = await axios.get('/api/contacts', {
         params: {
           page: currentPage,
           limit: 10,
@@ -68,10 +68,10 @@ const Contacts = () => {
     e.preventDefault();
     try {
       if (editingContact) {
-        const response = await axios.put(`http://localhost:5000/api/contacts/${editingContact._id}`, formData);
+        const response = await axios.put(`/api/contacts/${editingContact._id}`, formData);
         console.log('Update response:', response.data);
       } else {
-        const response = await axios.post('http://localhost:5000/api/contacts', formData);
+        const response = await axios.post('/api/contacts', formData);
         console.log('Create response:', response.data);
       }
       setShowModal(false);
@@ -108,7 +108,7 @@ const Contacts = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this contact?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+        await axios.delete(`/api/contacts/${id}`);
         fetchContacts();
       } catch (error) {
         console.error('Error deleting contact:', error);
