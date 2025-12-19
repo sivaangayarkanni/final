@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Set axios defaults
-  axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  axios.defaults.baseURL = 'https://final-backend-07ab.onrender.com';
 
   useEffect(() => {
     if (token) {
