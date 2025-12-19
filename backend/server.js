@@ -14,7 +14,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['https://final-frontend-wjpy.onrender.com', 'http://localhost:3000', 'http://localhost:3001'],
+  origin: true,
   credentials: true
 }));
 app.use(express.json());
